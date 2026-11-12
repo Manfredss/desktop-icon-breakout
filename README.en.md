@@ -72,6 +72,15 @@ Desktop icons come first. Fewer than 24? Installed apps fill the vacancies, up t
 
 Icons are arranged into a playable wall; **their real desktop coordinates are not preserved**. Fullscreen uses an independent game window on the current display, not one field spanning multiple monitors. A readable local wallpaper can become the backdrop; unsupported environments and dynamic wallpapers use the game's plain background.
 
+<details>
+<summary>Actual Mac rendering: same game, different native recruits</summary>
+
+![Actual macOS rendering with native Safari, Finder, and system app icons](docs/media/macos.png)
+
+Rendered by the running application on a GitHub-hosted Apple Silicon Mac. All 20 icons came from apps installed on that Mac. The Intel Mac build passed the same check.
+
+</details>
+
 ## Your files are safe. Your afternoon is negotiable.
 
 - Reads icon artwork, application names, and local wallpaper. Does not launch the underlying apps or documents.
@@ -120,6 +129,8 @@ Build on the target OS; archives appear in `release/`. GitHub Actions builds Win
 **Where is my favorite app?** Only readable local icons are used. Missing/hidden/broken shortcuts and remote `.url` / UNC artwork are skipped.
 
 **No icons or wallpaper on Linux?** Install a desktop icon theme such as Adwaita. Wallpaper lookup covers Windows, macOS, GNOME/Cinnamon, and XFCE; other environments can use the plain backdrop. If graphics libraries are missing, install your distribution's Qt/X11/Wayland system dependencies.
+
+If Ubuntu/Debian reports missing `libxcb-shape.so.0`, install `sudo apt install libxcb-shape0`. The build environment includes this dependency and verifies actual UI and packaged-app startup under an X11 virtual display.
 
 **No sound on Mac/Linux?** Synthesized sound is currently Windows-only. Other platforms explicitly show muted audio; all game rules work.
 

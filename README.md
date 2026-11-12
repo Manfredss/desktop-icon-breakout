@@ -73,6 +73,15 @@ Windows 已在真实桌面试玩；macOS 和 Linux 的自动构建及启动结�
 
 目前会把图标排成可玩的砖墙，**不会保留它们在真实桌面上的原始坐标**。全屏是一层独立游戏窗口，支持当前屏幕，不把多个显示器拼成球场。壁纸可用时作为背景；不支持的桌面环境或动态壁纸使用游戏默认背景。
 
+<details>
+<summary>看看 Mac 上的真实运行画面：同一款游戏，另一批原生图标</summary>
+
+![macOS 实际渲染，含 Safari、Finder 与系统应用原生图标](docs/media/macos.png)
+
+由 GitHub 的 Apple Silicon Mac 实际运行并渲染，20 个图标均来自该 Mac 已安装的应用。Intel Mac 也已通过相同验证。
+
+</details>
+
 ## 文件安全，生产力另说
 
 - 只读取图标外观、应用名称和本地壁纸；不打开图标所指向的软件或文档。
@@ -121,6 +130,8 @@ python tools/build.py
 **怎么没有某个软件？** 只使用实际能读取的本地图标；未安装、隐藏或损坏的快捷方式、远程 `.url` / UNC 图标会跳过。
 
 **Linux 没有图标 / 壁纸？** 需要可用的桌面图标主题，例如 Adwaita。壁纸读取目前覆盖 Windows、macOS、GNOME / Cinnamon 和 XFCE；其他环境可正常玩默认背景。Linux 图形库缺失时，请安装发行版的 Qt/X11/Wayland 运行所需系统库。
+
+若 Ubuntu / Debian 报缺少 `libxcb-shape.so.0`，安装 `sudo apt install libxcb-shape0`。构建环境已包含此依赖，并用 X11 虚拟显示器验证实际窗口与发行包启动。
 
 **Mac / Linux 为什么没声音？** 当前合成音效仅 Windows 提供；其他系统会明确显示静音，玩法完整。
 

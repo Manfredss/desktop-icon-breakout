@@ -32,7 +32,7 @@ jobs:
           cache: pip
       - name: Linux desktop libraries
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 adwaita-icon-theme fonts-noto-cjk xvfb
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 adwaita-icon-theme fonts-noto-cjk xvfb
       - name: Install build dependencies
         run: python -m pip install -r requirements-dev.txt
       - name: Test
@@ -40,7 +40,7 @@ jobs:
         run: python -m pytest -q
       - name: Test on X11
         if: runner.os == 'Linux'
-        run: xvfb-run -a python -m pytest -q
+        run: xvfb-run -a python -m pytest -q -s
       - name: Render actual native UI
         if: runner.os != 'Linux'
         run: python app.py --demo --lang en --smoke-test smoke.png

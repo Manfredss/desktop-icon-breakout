@@ -1,3 +1,3 @@
 """Desktop Icon Breakout. Real icons. Questionable productivity."""
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
