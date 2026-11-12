@@ -8,7 +8,7 @@
 **经研究决定：您的软件图标，今日调任砖块。**<br>
 *Your icons have been reassigned to brick duty. Effective immediately.*
 
-[English](README.en.md) · **简体中文** · [下载 / Download](https://github.com/Manfredss/desktop-icon-breakout/releases/latest) · [操作说明](#30-秒上岗培训)
+[English](README.en.md) · **简体中文** · [下载 / Download](https://github.com/Manfredss/desktop-icon-breakout/releases/latest) · [操作说明](#快速上手)
 
 [![Build](https://github.com/Manfredss/desktop-icon-breakout/actions/workflows/build.yml/badge.svg)](https://github.com/Manfredss/desktop-icon-breakout/actions/workflows/build.yml)
 ![Platforms](https://img.shields.io/badge/Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-native%20icons-8e80ee)
@@ -122,6 +122,8 @@ python tools/build.py
 ```
 
 在目标系统上打包，产物放到 `release/`。GitHub Actions 分别构建 Windows、Mac Apple Silicon、Mac Intel 和 Linux，并执行物理测试、原生图标测试和实际界面离屏渲染。发布包附带 SHA-256 校验文件。
+
+Windows 打包脚本会为构建子进程隔离 DLL 搜索路径，避免编辑器附带的 OpenSSL 与 Python 的版本冲突；不会修改系统环境变量。
 
 ## 常见问题
 

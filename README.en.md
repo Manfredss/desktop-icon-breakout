@@ -122,6 +122,8 @@ python tools/build.py
 
 Build on the target OS; archives appear in `release/`. GitHub Actions builds Windows, Mac Apple Silicon, Mac Intel, and Linux separately. Checks cover physics, native-icon parsing, and offscreen rendering of the actual UI. Downloads include SHA-256 checksum files.
 
+On Windows, the build script isolates the child process's DLL search path so an editor's bundled OpenSSL cannot conflict with Python's version. System environment variables stay unchanged.
+
 ## FAQ
 
 **I only have two desktop icons.** Installed apps fill the wall. Repeated appearances do not create copies of your real files.

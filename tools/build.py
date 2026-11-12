@@ -17,6 +17,24 @@ sys.path.insert(0, str(ROOT))
 from desktop_breakout import __version__
 
 
+def build_environment() -> dict[str, str]:
+    environment = dict(os.environ)
+    if sys.platform == "win32":
+        # Qt's build hooks probe OpenSSL in a child process. An editor's PATH
+        # may contain another application's incompatible libssl/libcrypto.
+        # Give this build only its Python runtime and Windows system tools.
+        candidates = [Path(sys.executable).parent]
+        for prefix in (sys.prefix, sys.base_prefix):
+            base = Path(prefix)
+            candidates.extend((base / "Library" / "bin", base / "DLLs", base / "Scripts", base))
+        windows = Path(environment.get("SystemRoot") or environment.get("WINDIR") or r"C:\Windows")
+        candidates.extend((windows / "System32", windows, windows / "System32" / "Wbem"))
+        paths = dict.fromkeys(os.path.normcase(str(path.resolve())) for path in candidates if path.is_dir())
+        environment["PATH"] = os.pathsep.join(paths)
+    environment.setdefault("PYINSTALLER_CONFIG_DIR", str(ROOT / "build" / ".pyinstaller-cache"))
+    return environment
+
+
 def main() -> None:
     system = platform.system()
     label = {"Windows": "windows", "Darwin": "macos", "Linux": "linux"}[system]
@@ -30,9 +48,7 @@ def main() -> None:
     elif system == "Darwin":
         command += ["--icon", "assets/app.icns", "--osx-bundle-identifier", "io.github.manfredss.desktop-icon-breakout"]
     command += ["app.py"]
-    environment = dict(os.environ)
-    environment.setdefault("PYINSTALLER_CONFIG_DIR", str(ROOT / "build" / ".pyinstaller-cache"))
-    subprocess.run(command, cwd=ROOT, env=environment, check=True)
+    subprocess.run(command, cwd=ROOT, env=build_environment(), check=True)
     distribution = ROOT / "dist" / ("DesktopIconBreakout.app" if system == "Darwin" else "DesktopIconBreakout")
     ancillary = distribution / "Contents" / "Resources" if system == "Darwin" else distribution
     licenses = ancillary / "licenses"
