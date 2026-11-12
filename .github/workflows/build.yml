@@ -1,0 +1,82 @@
+name: Build and test
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows-x64
+          - os: macos-15
+            platform: macos-arm64
+          - os: macos-15-intel
+            platform: macos-x64
+          - os: ubuntu-22.04
+            platform: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Linux desktop libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 adwaita-icon-theme fonts-noto-cjk xvfb
+      - name: Install build dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Test
+        if: runner.os != 'Linux'
+        run: python -m pytest -q
+      - name: Test on X11
+        if: runner.os == 'Linux'
+        run: xvfb-run -a python -m pytest -q
+      - name: Render actual native UI
+        if: runner.os != 'Linux'
+        run: python app.py --demo --lang en --smoke-test smoke.png
+      - name: Render actual native UI on X11
+        if: runner.os == 'Linux'
+        run: xvfb-run -a python app.py --demo --lang en --smoke-test smoke.png
+      - name: Build portable package
+        run: python tools/build.py
+      - name: Verify packaged app
+        if: runner.os != 'Linux'
+        run: python tools/verify_bundle.py
+      - name: Verify packaged app on X11
+        if: runner.os == 'Linux'
+        run: xvfb-run -a python tools/verify_bundle.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-icon-breakout-${{ matrix.platform }}
+          path: |
+            release/*
+            smoke.png
+            smoke.json
+          if-no-files-found: error
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" artifacts/release/*.zip artifacts/release/*.tar.gz artifacts/release/*.sha256 --title "Desktop Icon Breakout $GITHUB_REF_NAME · 图标今日值班" --notes-file docs/RELEASE.md

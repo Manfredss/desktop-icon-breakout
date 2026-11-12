@@ -1,0 +1,30 @@
+DESKTOP ICON BREAKOUT / 桌面图标打砖块
+Your icons have been reassigned to brick duty.
+经研究决定：今天由软件图标承担碰撞责任。
+
+Windows: Extract the whole ZIP. Double-click DesktopIconBreakout.exe.
+Windows：完整解压 ZIP，双击 DesktopIconBreakout.exe。
+
+macOS: Unzip and open DesktopIconBreakout.app. You can move it to Applications.
+macOS：解压并打开 DesktopIconBreakout.app，也可拖入「应用程序」。
+
+Linux: Extract the tar.gz archive, then run ./DesktopIconBreakout.
+Linux：解压 tar.gz，在目录中运行 ./DesktopIconBreakout。
+
+No Python / .NET installation needed for release bundles.
+发行包自带运行环境，无需安装 Python 或 .NET。
+
+Mouse / Arrow keys / A D: move | Space / click: launch
+P: pause | R: restart | F11: fullscreen | Esc: quit
+鼠标 / 方向键 / A D：移动 | 空格 / 单击：发球
+P：暂停 | R：重开 | F11：全屏 | Esc：退出
+
+Choose 中文 / EN in the menu to change language.
+菜单可切换中文 / English。
+
+Real icons are read from your desktop, installed apps and the system.
+Only their copies in the game are destroyed. Your files stay untouched.
+图标来自你的桌面、已安装软件和系统。消除的只是游戏副本，原文件不受影响。
+
+Source, troubleshooting and updates / 源码、常见问题与更新：
+https://github.com/Manfredss/desktop-icon-breakout

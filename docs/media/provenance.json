@@ -1,0 +1,107 @@
+{
+  "renderer": "Actual PySide6/QPainter game renderer",
+  "platform": "Windows 11 · AMD64",
+  "icons": [
+    {
+      "name": "Google Chrome",
+      "source": "application"
+    },
+    {
+      "name": "Microsoft Edge",
+      "source": "application"
+    },
+    {
+      "name": "Visual Studio Code",
+      "source": "application"
+    },
+    {
+      "name": "Blender",
+      "source": "application"
+    },
+    {
+      "name": "Steam",
+      "source": "application"
+    },
+    {
+      "name": "Word",
+      "source": "application"
+    },
+    {
+      "name": "Excel",
+      "source": "application"
+    },
+    {
+      "name": "PowerPoint",
+      "source": "application"
+    },
+    {
+      "name": "Adobe Photoshop",
+      "source": "application"
+    },
+    {
+      "name": "OBS Studio",
+      "source": "application"
+    },
+    {
+      "name": "VLC media player",
+      "source": "application"
+    },
+    {
+      "name": "Notepad",
+      "source": "application"
+    },
+    {
+      "name": "Calculator",
+      "source": "application"
+    },
+    {
+      "name": "File Explorer",
+      "source": "application"
+    },
+    {
+      "name": "OneNote",
+      "source": "application"
+    },
+    {
+      "name": "PowerShell",
+      "source": "application"
+    },
+    {
+      "name": "Windows PowerShell",
+      "source": "application"
+    },
+    {
+      "name": "Command Prompt",
+      "source": "application"
+    },
+    {
+      "name": "Anaconda Navigator",
+      "source": "application"
+    },
+    {
+      "name": "Visual Studio",
+      "source": "application"
+    },
+    {
+      "name": "Git Bash",
+      "source": "application"
+    },
+    {
+      "name": "Git",
+      "source": "application"
+    },
+    {
+      "name": "Git GUI",
+      "source": "application"
+    },
+    {
+      "name": "Notes",
+      "source": "application"
+    }
+  ],
+  "personal_desktop_icons": 0,
+  "personal_wallpaper": false,
+  "automated_paddle": true,
+  "fps": 20,
+  "seconds": 16.0
+}

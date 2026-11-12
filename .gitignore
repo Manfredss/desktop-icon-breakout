@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+release/
+*.spec
+*.log
+settings.json
+smoke*.png
+smoke*.json
+.DS_Store
+Thumbs.db
+docs/media/frames/
+.test-*/
