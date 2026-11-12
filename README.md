@@ -23,7 +23,7 @@
 
 把桌面上的**真实图标**变成砖墙，用鼠标移动挡板接球。桌面太干净？从**本机已安装的软件**借点人手。支持中文 / English、窗口 / 全屏、连续关卡，以及三次机会
 
-## 下载即玩
+## 开箱即用
 
 到 **[最新版本 Releases](https://github.com/Manfredss/desktop-icon-breakout/releases/latest)**，按系统选择：
 
