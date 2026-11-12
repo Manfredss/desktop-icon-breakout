@@ -52,6 +52,9 @@ def test_demo_does_not_publish_unrecognized_names_or_paths():
     assert safe_demo_name("Quarterly payroll") is None
     assert safe_demo_name(r"C:\Users\private\Google Chrome") is None
     assert safe_demo_name("MyFirefoxDocument") is None
+    assert safe_demo_name("Git Release Notes") is None
+    assert safe_demo_name("My Notes") is None
+    assert safe_demo_name("Adobe Photoshop 2025") == "Adobe Photoshop"
 
 
 @pytest.mark.parametrize("name", [

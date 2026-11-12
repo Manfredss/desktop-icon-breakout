@@ -89,7 +89,7 @@ def _helper_shortcut(name: str) -> bool:
     """Distinguish a main application from its developer/shell launchers."""
     if name.strip().casefold() == "command prompt":
         return False  # The actual Windows application has this exact name.
-    return bool(re.search(r"\b(?:prompt|console|shell|ise|manual|documentation)\b|command[ -]line|命令提示|开发人员命令", name, re.I))
+    return bool(re.search(r"\b(?:prompt|console|shell|ise|manual|documentation)\b|release[ -]notes|command[ -]line|命令提示|开发人员命令", name, re.I))
 
 
 def safe_demo_name(name: str) -> str | None:
@@ -98,7 +98,10 @@ def safe_demo_name(name: str) -> str | None:
         return None
     normalized = re.sub(r"[®™]", "", name).strip()
     for known in _DEMO_NAMES:
-        if re.search(r"(?<![\w])" + re.escape(known) + r"(?![\w])", normalized, re.I):
+        # Accept the app's name plus a version / packaging suffix, not a substring
+        # such as 'Notes' inside 'Git Release Notes' or a user's renamed shortcut.
+        suffix = r"(?:\s+(?:\([^\r\n]+\)|\d[\w. -]*|x64|x86|ARM64))*"
+        if re.fullmatch(re.escape(known) + suffix, normalized, re.I):
             return known
     return None
 

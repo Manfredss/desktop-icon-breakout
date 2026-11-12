@@ -79,15 +79,7 @@
       "source": "application"
     },
     {
-      "name": "Visual Studio",
-      "source": "application"
-    },
-    {
       "name": "Git Bash",
-      "source": "application"
-    },
-    {
-      "name": "Git",
       "source": "application"
     },
     {
@@ -95,7 +87,11 @@
       "source": "application"
     },
     {
-      "name": "Notes",
+      "name": "Jupyter Notebook",
+      "source": "application"
+    },
+    {
+      "name": "Visual Studio",
       "source": "application"
     }
   ],
