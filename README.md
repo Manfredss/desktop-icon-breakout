@@ -137,7 +137,9 @@ Windows 打包脚本会为构建子进程隔离 DLL 搜索路径，避免编辑�
 
 **Mac / Linux 为什么没声音？** 当前合成音效仅 Windows 提供；其他系统会明确显示静音，玩法完整。
 
-**想报告问题？** 在 [Issues](https://github.com/Manfredss/desktop-icon-breakout/issues) 附系统版本、桌面环境和复现步骤即可。***公开截图前留意个人文件名***。
+**想报告问题？** 在 [Issues](https://github.com/Manfredss/desktop-icon-breakout/issues) 附系统版本、桌面环境和复现步骤即可。
+
+⚠***公开截图前留意个人文件名***⚠。
 
 ## 致谢
 
