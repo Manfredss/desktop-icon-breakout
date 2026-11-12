@@ -139,7 +139,7 @@ Windows 打包脚本会为构建子进程隔离 DLL 搜索路径，避免编辑�
 
 **想报告问题？** 在 [Issues](https://github.com/Manfredss/desktop-icon-breakout/issues) 附系统版本、桌面环境和复现步骤即可。
 
-⚠***公开截图前务必留意个人文件名***⚠，别把自己开盒了
+⚠***公开截图前务必留意敏感信息***⚠，别把自己开盒了
 
 ## 致谢
 
